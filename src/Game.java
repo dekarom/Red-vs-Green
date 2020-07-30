@@ -79,12 +79,12 @@ public class Game {
 				for (int i = 0; i < turns + 1; i++) { // Each pass represents a new generation, formed by the branches.
 					ArrayList<Cell> adjList1 = new ArrayList<Cell>(); // Used to temporary store the state of each cell 
 																	 // for the next iteration.
-				//	System.out.println("Gen" + " " + (i) + " " + counter);
+				
 					adjList.forEach((k, v) -> { // Iterates through each pair of elements from the HashMap.
 						greenNum = 0;
 						Cell temp = new Cell(k.getCellValue(), k.getxCor(), k.getyCor());
-						if (temp.getCellValue() == 1 && temp.getxCor() == x && temp.getyCor() == y) {
-							counter++;
+						if (temp.getCellValue() == 1 && temp.getxCor() == x && temp.getyCor() == y) { // Increases the counter when the
+							counter++;                                                               // targeted cell is green.
 						}
 						for (int j = 0; j < v.size(); j++) {
 							Cell temp1 = v.get(j);
@@ -96,9 +96,8 @@ public class Game {
 							if (greenNum == 3 || greenNum == 6) {
 								temp.changeCellValue();
 							}
-						}
-						// This branch deals with rules 3&4.
-						if (temp.getCellValue() == 1) {
+						}											
+						if (temp.getCellValue() == 1) { // This branch deals with rules 3&4.
 							if (greenNum != 2 && greenNum !=3 && greenNum != 6) {
 								temp.changeCellValue();
 							}
